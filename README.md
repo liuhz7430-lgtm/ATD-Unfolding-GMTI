@@ -16,13 +16,15 @@ python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/
 python -m pip install -r requirements.txt
 ```
 
-## Evaluate a trained checkpoint
+## Evaluate the released checkpoint
 
-Train the model as described below, then point the test commands at the resulting checkpoint. Both commands default to four independent trajectories, SCRs of −5, 0, and 10 dB, and a 15 dB target-to-noise ratio.
+The [epoch-20 checkpoint](checkpoints/best.pt) is included at the default path used by `test.py`. It contains the trained model used for the reported experiments. The public copy replaces an internal path in the training metadata and preserves the tensor values. Its SHA-256 is `a5b82138f68af27d519130a8775ee4dc9a6950d6f106a57be4b8210855dee81b`.
+
+Both commands default to four independent trajectories, SCRs of −5, 0, and 10 dB, and a 15 dB target-to-noise ratio.
 
 ```bash
-python test.py --gpus 0,1,2 --dataset simulated --checkpoint runs/paper-training/checkpoints/best.pt
-python test.py --gpus 0,1,2 --dataset semireal --checkpoint runs/paper-training/checkpoints/best.pt
+python test.py --gpus 0,1,2 --dataset simulated
+python test.py --gpus 0,1,2 --dataset semireal
 ```
 
 For a single GPU, use `--gpus 0`. For the MiniSAR-derived experiment, first follow the [data setup instructions](real_scene/README.md). It derives the background from a measured complex image and generates echoes, target motion, and noise under the paper's acquisition model.

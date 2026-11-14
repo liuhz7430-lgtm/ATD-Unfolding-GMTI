@@ -5,6 +5,7 @@ __pycache__/
 /.env
 /cache/
 /runs/
-/checkpoints/
+/checkpoints/*
+!/checkpoints/best.pt
 /real_scene/*
 !/real_scene/README.md
