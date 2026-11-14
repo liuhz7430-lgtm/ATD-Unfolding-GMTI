@@ -2,6 +2,8 @@
 
 Reference implementation for **Joint Spatial and Temporal Unfolding for Moving-Target State Estimation and Imaging in Multichannel SAR** by Haozong Liu, College of Future Information Technology, Fudan University.
 
+[Read the manuscript (PDF)](manuscript.pdf)
+
 The model estimates the two-dimensional ground position and velocity of one moving point target from three ideally registered along-track SAR channels. It combines unfolded static/moving echo separation, coherent per-frame state fitting, and sliding-window refinement. The estimated velocity is used to refocus the target with local backprojection. The temporal refiner is offline and can use later frames.
 
 ## Setup
