@@ -1,0 +1,117 @@
+seed: 20261026
+radar:
+  channels: 3
+  frames: 25
+  carrier_hz: 9.6e9
+  bandwidth_hz: 640000000.0
+  frequency_samples: 256
+  pulses: 192
+  aperture_s: 0.45
+  frame_interval_s: 0.45
+  radius_m: 7000.0
+  height_m: 7000.0
+  speed_m_s: 100.0
+  baseline_m: 0.238
+  initial_angle_deg: 80.0
+scene:
+  min_abs_radial_velocity_m_s: 0.3
+  position_half_uq_m:
+  - 8.0
+  - 2.0
+  velocity_half_xy_m_s:
+  - 2.0
+  - 1.2
+  acceleration_half_xy_m_s2:
+  - 0.4
+  - 0.15
+  snr_db:
+  - 5.0
+  - 25.0
+  amplitude:
+  - 0.7
+  - 1.3
+  clutter_points: 48
+  clutter_half_uq_m:
+  - 30.0
+  - 30.0
+  clutter_db:
+  - -5.0
+  - 5.0
+model:
+  stages: 6
+  coarse_grid:
+  - 151
+  - 49
+  coarse_half_uq_m:
+  - 240.0
+  - 12.0
+  operator_chunk: 128
+  initial_damping: 0.03
+  initial_step: 0.8
+  max_update:
+  - 4.0
+  - 0.5
+  - 2.0
+  - 1.0
+  front_stages: 3
+  front_step: 0.8
+  phase_step: 0.2
+  support_threshold: 0.1
+  support_temperature: 0.1
+  recovery_epsilon: 0.01
+  roi_half_uq_m:
+  - 8.0
+  - 1.5
+training:
+  epochs: 12
+  train_samples: 128
+  validation_samples: 32
+  test_samples: 64
+  batch_size: 1
+  learning_rate: 0.005
+  weight_decay: 0.0001
+  gradient_clip: 5.0
+loss:
+  position_scale_m: 1.0
+  velocity_scale_m_s: 1.0
+  position: 1.0
+  velocity: 1.0
+  consistency: 0.1
+  front_consistency: 0.1
+  target_echo: 0.2
+  radial: 0.1
+output:
+  save_examples: 3
+temporal:
+  enabled: true
+  window: 5
+  stages: 3
+  motion_weight: 0.1
+  motion_scale_m: 0.5
+  initial_damping: 0.03
+  initial_step: 0.8
+  max_update:
+  - 4.0
+  - 0.5
+  - 2.0
+  - 1.0
+wide:
+  background_half_uq_m:
+  - 30.0
+  - 30.0
+  scatter_spacing_uq_m:
+  - 1.0
+  - 0.5
+  crop:
+  - 0
+  - 1000
+  - 0
+  - 800
+  scene_file: MiniSAR20050519p0004image005.gff
+  window_batch: 3
+optimization:
+  background_grid_half_uq_m:
+  - 32.0
+  - 30.0
+  cache_echoes: true
+  cache_dir: cache/echoes
